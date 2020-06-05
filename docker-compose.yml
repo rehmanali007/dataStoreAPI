@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    api:
+        build: ./api
+        ports: 
+            - "5000:5000"
+        volumes: 
+            - .:/usr/app/src
+        links: 
+            - db
+        depends_on: 
+            - db
+        command: python app.py
+    
+    db:
+        image: mongo:latest
